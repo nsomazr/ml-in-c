@@ -2,9 +2,9 @@
 /*
 In this example, we are creating a simple linear regression model to predict the price of a pizza based on its diameter and number of toppings. 
 The relationship between the diameter of the pizza and its price is modeled using a linear equation: 
-price = weight * diameter + bias, which can be written as [y = wx + b].
+price = (weight_one * diameter) + (weight_two*topping) + bias, which can be written as [y = w1x1 + w2x2 + b].
 
-The objective of this model is to find the optimal values of 'weight' (w) and 'bias' (b) that minimize the prediction error.
+The objective of this model is to find the optimal values of 'weights' (w1,w2) and 'bias' (b) that minimize the prediction error.
 To evaluate the performance of our model, we use the R-squared metric, which measures how well the model's predictions 
 match the actual data. Additionally, we use the loss function (cost function) to quantify the prediction error 
 during the training process.
