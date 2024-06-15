@@ -117,5 +117,4 @@ int main(void) {
     printf("Optimum Bias: %lf \n", bias);
 
     test();
-    return 0;
 }
