@@ -1,16 +1,20 @@
 /*
+This example provides a basic understanding of linear models, represented by the equation 
+y = mx + c or y = wx + b. In this context, we are training a model to learn the optimal value 
+of the weight (w), which represents the slope of the line, and the bias (b), which represents 
+the y-intercept.
 
-This example provides a very simple understanding of linear models in the 
-mathematical for of y = mx + c or y = wx + b. Where in this example
-we are training a model to learn the best value of weight (w) the slope of 
-the stright line and bias(b) [the y-intercept]. In this example we have our 
-sample data which is the hours the student use to study and the corresponding
-performance of the student (the data is imaginary), at the end we test out 
-model by passing the time student use to study and the model predicts the 
-possible performance of the student. In this example we on use on one metric 
-measure the loss (cost) function which is our objective function.
+In this example, we use imaginary sample data where the independent variable (x) is the number 
+of hours a student studies, and the dependent variable (y) is the corresponding performance 
+of the student. Our goal is to train the model using this data to learn the relationship between 
+study hours and performance.
 
+Once the model is trained, we test it by providing new study hours as input, and the model predicts 
+the expected performance of the student. We evaluate the model using a single metric, the loss 
+(cost) function, which serves as our objective function to quantify the prediction error 
+during the training process.
 */
+
 
 #include <stdio.h>
 #include <stdlib.h>
