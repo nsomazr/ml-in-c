@@ -19,8 +19,12 @@ during the training process.
 #include <stdio.h>
 #include <stdlib.h>
 
-static double X[4] = {2, 4, 6, 8}; // study hours
-static double y[4] = {20, 40, 60, 80}; // marks (performance)
+static double X[] = {2, 4, 6, 8}; // study hours
+static double y[] = {20, 40, 60, 80}; // marks (performance)
+
+// other trial values
+// static double X[] = {0, 2, 5, 7}; // x values
+// static double y[] = {-1, 5, 12, 20}; // y values
 
 static double weight = 0;
 static double bias = 0;
@@ -81,17 +85,19 @@ static double bias_grad(double inputs[], double labels[], int size) {
 void test() {
     int size;
 
+    printf("Let's test our linear model\n");
+    printf("\n");
     printf("Enter the size of your data (Number of data points):\n");
     scanf("%d", &size);
-
+    printf("\n");
     double inputs[size];
     for (int i = 0; i < size; i++) {
         printf("Enter number of hour(s) for data : %d \n", i + 1);
         scanf("%lf", &inputs[i]);
     }
-
+    printf("\n");
     double* predictions = predict(inputs, size, weight, bias);
-    printf("Prediction for inputs\n");
+    printf("Prediction for inputs\n\n");
 
     for (int i = 0; i < size; i++) {
         printf("%lf hrs : %lf marks(performances)\n", inputs[i], predictions[i]);
@@ -101,14 +107,17 @@ void test() {
 }
 
 int main(void) {
-    int epoch = 15000;
+    int epoch = 100000;
     double learning_rate = 0.0001;  
     int size = sizeof(X) / sizeof(X[0]);
+    double loss = 0;
+    double grad_w = 0;
+    double grad_b = 0;
 
     for (int i = 1; i <= epoch; i++) {
-        double loss = cost(X, y, size, weight, bias);
-        double grad_w = weight_grad(X, y, size);
-        double grad_b = bias_grad(X, y, size);
+        loss = cost(X, y, size, weight, bias);
+        grad_w = weight_grad(X, y, size);
+        grad_b = bias_grad(X, y, size);
 
         weight = weight - learning_rate * grad_w;
         bias = bias - learning_rate * grad_b;
@@ -116,9 +125,10 @@ int main(void) {
         printf("Epoch %d ---- Loss: %lf \n", i, loss);
         printf("Weight: %lf, Bias: %lf, Grad_W: %lf, Grad_B: %lf\n", weight, bias, grad_w, grad_b); 
     }
-
+    printf("\n");
+    printf("Model Loss: %lf \n", loss);
     printf("Optimum Weight: %lf \n", weight);
     printf("Optimum Bias: %lf \n", bias);
-
+    printf("\n");
     test();
 }
